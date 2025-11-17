@@ -24,8 +24,10 @@ jobs:
       - name: Build Frontend
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: build
+          path: ./dist
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
